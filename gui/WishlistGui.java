@@ -130,7 +130,7 @@ public class WishlistGui extends JFrame implements ActionListener{
 		btnWithdraw.setBounds(488, 328, 136, 31);
 		frmWishlist.getContentPane().add(btnWithdraw);
 		
-		textField = new JTextField();
+		textField = new JTextArea();
 		textField.setBounds(50, 47, 360, 108);
 		frmWishlist.getContentPane().add(textField);
 		textField.setColumns(10);
@@ -192,6 +192,9 @@ public class WishlistGui extends JFrame implements ActionListener{
 		if(e.getSource()==newWishBtn) {
 			String wish=addWishText.getText();
 			String price=addPrice.getText();
+			for(int i=0;i<list.getItemCount();i++) {
+				if(list.getItemAt(i).toString().equals(wish))list.removeItem(wish);
+			}
 			addWish(wish, price);
 			list.addItem(wish);
 			addWishText.setText("");
